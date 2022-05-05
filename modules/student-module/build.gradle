@@ -1,7 +1,5 @@
 apply plugin: 'com.axelor.app-module'
 
-axelor {
-  title = "Student :: Module"
+axelor{
+	title = "Student :: Module"
 }
-
-
