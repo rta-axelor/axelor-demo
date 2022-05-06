@@ -12,7 +12,7 @@
   </grid>
   
   <form model="com.axelor.student.db.People" title="People" name="people-form">
-	  <panel>
+	  <panel >
 	  		<field name="reference"/>
 	  		<field name="jsonDetails"/>
 	  		<field name="uniqueTestField"/>

@@ -5,7 +5,7 @@
   
   <menuitem title="Demo" name="student-root"/>
   
-  <menuitem title="Students" name="student-root-student" parent="student-root" action="action.student.root.student"/>
+  <menuitem title="Students" name="student-root-student" parent="student-root" action="action.student.root.student" />
   <action-view name="action.student.root.student" title="Students" model="com.axelor.student.db.Student">
   	<view type="grid" name="student-grid"/>
   	<view type="form" name="student-form"/>
@@ -22,6 +22,12 @@
  <view type="grid" name="school-grid"/>
  <view type="form" name="school-form"/>
  </action-view> 
+ 
+ <menuitem title="Test schools" name="student-root-test-school" parent="student-root" action="action.student.test.school"/>
+ <action-view name="action.student.test.school" title="Test schools" model="com.axelor.student.db.School">
+ 	<view type="grid" name="school-test-grid"/>
+ 	<view type="form" name="school-form"/>
+ </action-view>
  
  <menuitem title="Addresses" name="student-root-address" parent="student-root" action="action.student.root.address"/>
  <action-view name="action.student.root.address" title="Addresses" model="com.axelor.student.db.Address">
