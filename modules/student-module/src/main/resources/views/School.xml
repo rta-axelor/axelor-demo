@@ -4,20 +4,34 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
   
-  <grid model="com.axelor.student.db.School" title="Schools" name="school-grid" customSearch="false"  >
-  <!-- <grid model="com.axelor.student.db.School" title="Schools" name="school-grid" canArchive="false" canDelete="false" canEdit="false"  edit-icon="false" canNew="false"  editable="true" canSave="false" x-no-fetch="false"> --> 
-  	<field name="schoolType"/>
+  <grid model="com.axelor.student.db.School" title="Schools" name="school-grid" groupBy="schoolType">
+  <!-- <grid model="com.axelor.student.db.School" title="Schools" name="school-grid" canArchive="false" canDelete="false" canEdit="false" customSearch="true" edit-icon="false" canNew="false"  editable="true" canSave="false" x-no-fetch="false"> --> 
+  	<hilite if="schoolName == null" color="danger" strong="true"/>
+  	<field name="schoolType" hidden="true"/>
   	<field name="schoolName"/>
   	<field name="address"/>
+  	
   </grid>
   
-  <grid model="com.axelor.student.db.School" title="Schools" name="school-test-grid" editable="true">
-  	<field name="schoolType" title="Test school"/>
+  <grid model="com.axelor.student.db.School" title="Schools" name="school-test-grid" editable="true" >
+  <toolbar>
+  	<button onClick="clickMe" prompt="Are you sure? (From toolbar)" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
+  </toolbar>
+  <menubar>
+  	<menu title="buttons">
+  		<item action="action" title="test"/>
+  	</menu>
+  	<menu title="button1">
+  		<item action="action1" title="test 1"/></menu>
+  </menubar>
+  
+  	<field name="schoolType" title="Test school" />
   	<field name="schoolName"/>
-  	<field name="address" />
+  	<field name="address" domain="self.completeAddress= 'SURAT'" massUpdate="true"/>
+  	<button onClick="clickMe" prompt="Are you sure?" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
   </grid>
  <form model="com.axelor.student.db.School" title="School" name="school-form">
- 	<panel>
+ 	<panel attached="true">
  		<field name="schoolType"/>
  		<field name="schoolName"/>
  		<field name="address"/>
@@ -26,7 +40,5 @@
  		<panel-related field="peopleSet"/>
  	</panel>
  </form>
-  
-  
 </object-views>
   
