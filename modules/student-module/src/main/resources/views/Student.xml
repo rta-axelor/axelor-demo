@@ -3,44 +3,46 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
   
-  <grid  model="com.axelor.student.db.Student" title="Students" name="student-grid" groupBy="classNumber" >
-  	<field name="name" width="200px"/>
+  <grid  model="com.axelor.student.db.Student" title="Students" name="student-grid" >
+  	<field name="name"/>
   	<field name="email"/>
   	<field name="rollNumber"/>
   	<field name="classNumber"/>
-  	<field name="percentage" aggregate="avg"/>
+  	<field name="percentage" />
   	<field name="parentName"/>
+  	
   </grid>
   
-  <form model="com.axelor.student.db.Student" title="Student" name="student-form" editable="true"  onNew="action-student-record-onnew" 
+  <form model="com.axelor.student.db.Student" title="Student" name="student-form" onNew="action-student-record-onnew" 
   onLoad="action-student-validate-student" onSave="action-student-record-onsave" canAttach="false" width="large" >
+  <panel-include view="student-popup-form" />
   <panel name="mainPanel" title="Main Panel" showFrame="true" if-module="student-module">
   
   <!-- colspan is 6 by default  -->
-  	<panel name="innerPanel1" colSpan="8" title="innerPanel 1" >
+  	<panel name="innerPanel1" colSpan="8" title="Inner Panel 1" >
   		<field name="status" colSpan="8" showTitle="false" widget="NavSelect"/>
   		<field name="fullName" readonly="true" colSpan="4" />
-  		<field name="name"/>
+  		<!-- <field name="name"/>
   		<field name="email"/>
-  		<field name="rollNumber"/>
+  		<field name="rollNumber"/> -->
   		<field name="classNumber"/>
   		<field name="percentage"/>
   	</panel>	
   </panel>
-  <panel name="innerPanel2" colSpan="4" title="innerPanel 2" itemSpan="3" hideIf="percentage &lt;= 35" sidebar="true" stacked="true" canCollapse="true" collapseIf="true">
+  <panel name="innerPanel2" colSpan="4" title="Inner Panel 2" itemSpan="3" hideIf="percentage &lt;= 35" sidebar="true" canCollapse="true" collapseIf="true">
   		
   		<field name="parentName"/>
   		<field name="testFieldForColumn"/>
   		<field name="isActive" />
   		<field name="image" />
-  		<field name="school" />
+  		<field name="school" colSpan="6" />
   	</panel>
   </form>
   <form model="com.axelor.student.db.Student" title="Student" name="student-popup-form">
-  		<panel>
+  		<panel name="innerPanel1" title="Inner panel 1">
   			<field name="name"/>
   			<field name="email"/>
-  			<field name="school" hideIf="$popup()"/>
+  			<field name="rollNumber"/>
   		</panel>
   </form>
   <action-record name="action-student-record-onsave" model="com.axelor.student.db.Student">

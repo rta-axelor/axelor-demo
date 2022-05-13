@@ -31,15 +31,15 @@
   	<button onClick="clickMe" prompt="Are you sure?" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
   </grid>
  <form model="com.axelor.student.db.School" title="School" name="school-form" width="large">
- 	<panel attached="true">
+ 	<panel >
  		<field name="schoolType"/>
  		<field name="schoolName"/>
- 		<field name="address"/>
+ 		<field name="address" canEdit="true"/>
  	</panel>
  	<panel-tabs>
  			<panel-related field="studentList" colSpan="12" form-view="student-popup-form" grid-view="student-grid"
- 			 canMove="true" orderBy="name"/><!-- for o2m & m2m we have to use panel related  -->
- 			<panel-related field="peopleSet" colSpan="12"/>
+ 			 canMove="true" orderBy="sequence" x-selector="checkbox"/><!-- for o2m & m2m we have to use panel related  -->
+ 			<panel-related field="peopleSet" colSpan="12" x-selector="checkbox"/>
  	</panel-tabs>
  </form>
 </object-views>
