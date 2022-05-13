@@ -36,6 +36,13 @@
   		<field name="school" />
   	</panel>
   </form>
+  <form model="com.axelor.student.db.Student" title="Student" name="student-popup-form">
+  		<panel>
+  			<field name="name"/>
+  			<field name="email"/>
+  			<field name="school" hideIf="$popup()"/>
+  		</panel>
+  </form>
   <action-record name="action-student-record-onsave" model="com.axelor.student.db.Student">
   	<field name="isActive" expr="true"/>
   </action-record>
