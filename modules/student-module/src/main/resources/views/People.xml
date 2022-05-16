@@ -60,7 +60,7 @@
 	  		<button onClick="action-people-validate-validate-onclick,action-people-record-fill-validate" name="validateBtn" title="Validate"/>
 	  </panel>
   </form>
-  <cards name="people-cards" model="com.axelor.student.db.People" title="People">
+  <cards name="people-cards" model="com.axelor.student.db.People" title="People" width="400px">
   	<field name="reference"/>
   	<field name="uniqueTestField"/>
   	<field name="dateOfBirth"/>
@@ -68,11 +68,17 @@
   	<field name="image"/>
   	<template>
   		<![CDATA[
-		  	<div class="span4 card-image">
-			<img ng-src="{{$image(null, 'image')}}">
+		  <div class="span4 card-image" >
+				  <img ng-if="image" ng-src="{{$image(null, 'image')}}">
+		  </div>
+		  <div class="span8">
+		  	
 		    <strong>{{reference}}</strong>
+		    <br/>
 		    <strong>{{uniqueTestField}}</strong>
+		   <br/>
 		    <strong>{{dateOfBirth}}</strong>
+		    <br/>
 		    <strong>{{timeOfBirth}}</strong>
 		  </div>
   		

@@ -15,12 +15,14 @@
   <action-view name="action.student.root.people" title="Peoples" model="com.axelor.student.db.People">
   <view type="grid" name="people-grid"/>
   <view type="form" name="people-form"/>
+  <view type="cards" name="people-cards"/>
   </action-view>
   
   <menuitem title="Schools" name="student-root-school" parent="student-root" action="action.student.root.school"/>
  <action-view name="action.student.root.school" title="Schools" model="com.axelor.student.db.School">
  <view type="grid" name="school-grid"/>
  <view type="form" name="school-form"/>
+ 
  <domain>self.address != null</domain>
 
  </action-view> 
