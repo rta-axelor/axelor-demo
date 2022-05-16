@@ -40,4 +40,9 @@
  <view type="form" name="address-form"/>
  </action-view>
  
+ <menuitem title="Project" name="student-root-project" parent="student-root" action="action.student.root.project"/>
+ <action-view name="action.student.root.project" title="Projects" model="com.axelor.student.db.Project">
+ 	<view type="kanban" name="project-kanban"/>
+ 	<view type="form" name="project-form"/>
+ </action-view>
 </object-views>
