@@ -86,6 +86,14 @@
   	</template>
   	
   </cards>
+  <search-filters name="people-search-filters" model="com.axelor.student.db.People" title="Peoples">
+  	<field name="timeOfBirth" hidden="true"/>
+  	<filter title="Date time is not null">
+  		<domain>self.dateTimeT != null</domain>
+  	</filter>
+  	
+  </search-filters>
+  
   <action-record name="action-people-record-on-personal-details-tab-select" model="com.axelor.student.db.People">
   	<field name="dateOfBirth" expr="eval: _date_" if="dateOfBirth == null"/>
   </action-record>
