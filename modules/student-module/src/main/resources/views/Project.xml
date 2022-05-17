@@ -27,9 +27,9 @@
   	
   	</template>
   </kanban>
-  <form model="com.axelor.student.db.Project" title="project" name="project-form">
-  	<panel name="mainPanel" title="Main Panel">
-  		<field name="statusSelect" showTitle="false" widget="NavSelect" colSpan="12"/>
+  <form model="com.axelor.student.db.Project" title="project" name="project-form" onLoad="action-project-attrs-set-attrs-on-validate">
+  	<panel name="mainPanel" title="Main Panel" >
+  		<field name="statusSelect" showTitle="false" widget="NavSelect" colSpan="12" onChange="action-project-group-status-onchange"/>
   		<field name="name"/>
   		<field name="percentage"/>
   		<field name="description" widget="html" colSpan="12"/>
@@ -43,5 +43,17 @@
   <action-validate name="action-project-validate-kanban-on-move">
   	<info message="Record Moved!"/>
   </action-validate>
+  
+  <action-group name="action-project-group-status-onchange">
+  	<action name="save"/>
+  	<action name="action-project-attrs-set-attrs-on-validate"/>
+  	<action name="save"/>
+  	
+  	</action-group>
+  
+  <action-attrs name="action-project-attrs-set-attrs-on-validate">
+  	<attribute name="readonly" for="name" expr="eval: true" if="statusSelect &gt;= 1"/>
+  	<attribute name="title" for="mainPanel" expr="eval: statusSelect &gt;= 1 ? &quot;Validated&quot; : &quot;Main panel&quot;"/>
+  </action-attrs>
   
   </object-views>
