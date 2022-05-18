@@ -9,7 +9,7 @@
   	<hilite if="schoolName == null" color="danger" strong="true"/>
   	<field name="schoolType" hidden="true"/>
   	<field name="schoolName"/>
-  	<field name="address"/>
+  	<field name="address" />
   	
   </grid>
   
@@ -18,23 +18,23 @@
   	<button onClick="clickMe" prompt="Are you sure? (From toolbar)" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
   </toolbar>
   <menubar>
-  	<menu title="buttons">
-  		<item action="action" title="test"/>
+  	<menu title="Buttons">
+  		<item action="action" title="Test"/>
   	</menu>
-  	<menu title="button1">
-  		<item action="action1" title="test 1"/></menu>
+  	<menu title="Button1">
+  		<item action="action1" title="Test 1"/></menu>
   </menubar>
   
   	<field name="schoolType" title="Test school" />
   	<field name="schoolName"/>
-  	<field name="address" domain="self.completeAddress= 'SURAT'" massUpdate="true"/>
+  	<field name="address" domain="self.school is null" massUpdate="true"/>
   	<button onClick="clickMe" prompt="Are you sure?" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
   </grid>
  <form model="com.axelor.student.db.School" title="School" name="school-form" width="large">
  	<panel >
  		<field name="schoolType"/>
  		<field name="schoolName"/>
- 		<field name="address" canEdit="true"/>
+ 		<field name="address" canEdit="true" domain="self.school is null"/>
  	</panel>
  	<panel-tabs>
  			<panel-related field="studentList" colSpan="12" form-view="student-popup-form" grid-view="student-grid"

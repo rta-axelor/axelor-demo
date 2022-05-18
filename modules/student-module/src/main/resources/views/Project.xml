@@ -53,7 +53,8 @@
   
   <action-attrs name="action-project-attrs-set-attrs-on-validate">
   	<attribute name="readonly" for="name" expr="eval: true" if="statusSelect &gt;= 1"/>
-  	<attribute name="title" for="mainPanel" expr="eval: statusSelect &gt;= 1 ? &quot;Validated&quot; : &quot;Main panel&quot;"/>
+  	<attribute name="title" for="mainPanel" expr="eval: statusSelect &gt;= 1 ? &quot;Validated&quot; : &quot;Main panel&quot; "/>
+  	
   </action-attrs>
   
   </object-views>
