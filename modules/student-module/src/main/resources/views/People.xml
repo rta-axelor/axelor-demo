@@ -11,7 +11,8 @@
   	<field name="timeOfBirth"/>
   </grid>
   
-  <form model="com.axelor.student.db.People" title="People" name="people-form" onNew="action-people-record-set-defaults-onnew" onLoad="action-people-method-check-possibilty">
+  <form model="com.axelor.student.db.People" title="People" name="people-form" onNew="action-people-group-on-new">
+   <!-- onLoad="com.axelor.student.web.PeopleController:checkPossiblity"> -->
 	  <panel name="mainpanel" title="Main panel">
 	  		<field name="$isValidated" title="Validated" type="one-to-many" target="com.axelor.student.db.Address" colSpan="12"></field>
 	  		<field name="reference"/>
@@ -28,7 +29,7 @@
 	  		
 	  		<!-- avoid using 'save' i.e. saving of record on onchange event. just done for testing purpose -->
 	  		
-	  		<field name="transientTest" onChange="save,	action-people-method-check-possibilty"/>
+	  		<field name="transientTest" onChange="save,action-people-method-check-possibilty"/>
 	  		<field name="test"/>	
 	  </panel>
 	  <panel-tabs>
@@ -63,7 +64,7 @@
 	  		<button onClick="action-people-validate-validate-onclick,action-people-record-fill-validate" name="validateBtn" title="Validate"/>
 	  </panel>
   </form>
-  <cards name="people-cards" model="com.axelor.student.db.People" title="People" width="400px">
+  <cards name="people-cards" model="com.axelor.student.db.People" title="People" width="300px">
   	<field name="reference"/>
   	<field name="uniqueTestField"/>
   	<field name="dateOfBirth"/>
@@ -89,6 +90,9 @@
   	</template>
   	
   </cards>
+  
+  
+  
   <search-filters name="people-search-filters" model="com.axelor.student.db.People" title="Peoples">
   	<field name="timeOfBirth" hidden="true"/>
   	<filter title="Date time is not null">
@@ -96,6 +100,11 @@
   	</filter>
   	
   </search-filters>
+  
+  <action-group name="action-people-group-on-new">
+  		<action name="action-people-record-set-defaults-onnew"/>
+  		<action name="action-people-record-call-service-method"/>
+  </action-group>
   
   <action-record name="action-people-record-set-defaults-onnew" model="com.axelor.student.db.People">
   	<field name="test" expr="eval: _test" />
@@ -120,5 +129,9 @@
   <action-method name="action-people-method-check-possibilty">
   	<call class="com.axelor.student.web.PeopleController" method="checkPossiblity"/>
   </action-method>
+  
+  <action-record name="action-people-record-call-service-method" model="com.axelor.student.db.People">
+  	<field name="test" expr="call:com.axelor.student.service.PeopleServiceImpl:test()"/>
+  </action-record>
   
   </object-views>

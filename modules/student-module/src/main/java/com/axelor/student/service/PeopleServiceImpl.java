@@ -1,5 +1,6 @@
 package com.axelor.student.service;
 
+
 import com.axelor.student.db.People;
 
 public class PeopleServiceImpl implements PeopleService{
@@ -9,6 +10,15 @@ public class PeopleServiceImpl implements PeopleService{
 		
 		System.err.println("Inside people service impl class.");
 	}
+
+	@Override
+	
+	public String test() {
+		
+		return "Hello";
+	}
+
+	
 
 	
 }
